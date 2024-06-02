@@ -31,13 +31,13 @@ export const loginUser = catchAsyncErrors(async(req,  res, next) => {
     //Find user in the database
     const user = await User.findOne({ email }).select("+password")
     if (!user) {
-        return next(new ErrorHandler("Please enter email or password", 401))
+        return next(new ErrorHandler("Invalid Username or Password", 401))
     }
 
     //Check if password is correct
     const isPasswordMatched = await user.comparePassword(password)
     if (!isPasswordMatched) {
-        return next(new ErrorHandler("Please enter email or password", 401))
+        return next(new ErrorHandler("Invalid Username or Password", 401))
     }
 
     sendToken(user,200,res)
