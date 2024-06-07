@@ -16,6 +16,10 @@ import UploadAvatar from './components/user/UploadAvatar';
 import UpdatePassword from './components/user/UpdatePassword';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ResetPassword from './components/auth/ResetPassword';
+import Cart from './components/cart/Cart';
+import Shipping from './components/cart/Shipping';
+import ConfirmOrder from './components/cart/ConfirmOrder';
+import PaymentMethod from './components/cart/PaymentMethod';
 
 function App() {
 
@@ -37,6 +41,10 @@ function App() {
             <Route path="/me/update_profile" element={<ProtectedRoute><UpdateProfile /></ProtectedRoute>}/>
             <Route path="/me/upload_avatar" element={<ProtectedRoute><UploadAvatar /></ProtectedRoute>}/>
             <Route path="/me/update_password" element={<ProtectedRoute><UpdatePassword /></ProtectedRoute>}/>
+            <Route path="/cart" element={<Cart />}/>
+            <Route path="/shipping" element={<ProtectedRoute><Shipping /></ProtectedRoute>}/>
+            <Route path="/confirm_order" element={<ProtectedRoute><ConfirmOrder /></ProtectedRoute>}/>
+            <Route path="/payment_method" element={<ProtectedRoute><PaymentMethod /></ProtectedRoute>}/>
           </Routes>
         </div>
         <Footer />

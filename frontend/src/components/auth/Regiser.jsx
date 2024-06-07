@@ -3,7 +3,7 @@ import { useRegisterMutation } from '../../redux/api/authApi'
 import toast from 'react-hot-toast';
 import { useSelector} from "react-redux";
 import { useNavigate } from 'react-router-dom';
-
+import MetaData from '../layout/MetaData'
 const Regiser = () => {
 
     const [user, setUser] = useState({
@@ -45,6 +45,9 @@ const Regiser = () => {
     }
 
   return (
+    <>
+    <MetaData title={"Register"} />
+    
     <div className="row wrapper">
       <div className="col-10 col-lg-5">
         <form
@@ -95,6 +98,7 @@ const Regiser = () => {
         </form>
       </div>
     </div>
+    </>
   )
 }
 
