@@ -17,7 +17,6 @@ export const userApi = createApi({
                     dispatch(setLoading(false));
                 } catch (error) {
                     dispatch(setLoading(false));
-                    console.log(error);
                 }
             },
             providesTags: ["User"],
