@@ -17,7 +17,9 @@ process.on('uncaughtException', (err) =>{
   process.exit(1)
 })
 
+if (process.env.NODE_ENV !== "PRODUCTION"){
 dotenv.config({ path: "backend/config/config.env" });
+}
 
 // Connecting to database
 connectDatabase();
@@ -36,6 +38,13 @@ import authRoutes from "./routes/auth.js";
 import orderRoutes from "./routes/order.js";
 import paymentRoutes from "./routes/payment.js";
 
+
+
+app.use("/api/v1", productRoutes);
+app.use("/api/v1", authRoutes);
+app.use("/api/v1", orderRoutes);
+app.use("/api/v1", paymentRoutes);
+
 if(process.env.NODE_ENV === "PRODUCTION"){
   app.use(express.static(path.join(__dirname, "../frontend/build")));
   
@@ -44,13 +53,6 @@ if(process.env.NODE_ENV === "PRODUCTION"){
     res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"))
   })
 }
-
-
-
-app.use("/api/v1", productRoutes);
-app.use("/api/v1", authRoutes);
-app.use("/api/v1", orderRoutes);
-app.use("/api/v1", paymentRoutes);
 
 app.use(errorMiddleware);
 
